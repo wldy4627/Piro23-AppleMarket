@@ -41,3 +41,8 @@ def update(request, pk):
         if form.is_valid():
             form.save()
         return redirect(f'posts/detail/{pk}', pk)
+
+def delete(request, pk):
+    post = Post.Objects.get(id=pk)
+    post.delete()
+    return redirect('/')
