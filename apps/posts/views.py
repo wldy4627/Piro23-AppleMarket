@@ -26,3 +26,18 @@ def detail(request, pk):
     target_post = Post.objects.get(id = pk)
     context = { 'post': target_post }
     return render(request, 'posts/detail.html', context=context)
+
+def update(request, pk):
+    if request.method == 'GET':
+        post = Post.objects.get(id=pk)
+        form = PostForm(instance=post)
+        context = { 'form': form, 
+                    'pk': pk }
+        
+        return render(request, 'posts/post_update.html', context=context)
+    else:
+        post = Post.objects.get(id=pk)
+        form = PostForm(instance=post)
+        if form.is_valid():
+            form.save()
+        return redirect(f'posts/detail/{pk}', pk)
