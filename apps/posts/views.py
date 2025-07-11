@@ -21,3 +21,8 @@ def create(request):
         if form.is_valid():
             form.save()
         return redirect('/')
+
+def detail(request, pk):
+    target_post = Post.objects.get(id = pk)
+    context = { 'post': target_post }
+    return render(request, 'posts/detail.html', context=context)
