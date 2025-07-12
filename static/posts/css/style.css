@@ -73,3 +73,11 @@ img {
     display: flex;
     justify-content: center;
 }
+
+.form-control {
+    margin-right: 10px;
+}
+
+.related-post {
+    margin-bottom: 10px;
+}
