@@ -10,6 +10,7 @@ class Post(models.Model):
     price = models.IntegerField('가격', default=1000)
     created_at = models.DateTimeField('작성일', auto_now_add=True)
     updated_at = models.DateTimeField('수정일', null=True, blank=True)
+    photo = models.ImageField('이미지', blank=True, upload_to='posts/%Y%m%d')
 
     def save(self, *args, **kwargs):
         if self.pk:  # 수정일 때에만 갱신

@@ -17,7 +17,7 @@ def create(request):
         context = { 'form': form }
         return render(request, 'posts/create.html', context=context)
     else:
-        form = PostForm(request.POST)
+        form = PostForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
         return redirect('/')
@@ -37,7 +37,7 @@ def update(request, pk):
         }
         return render(request, 'posts/update.html', context=context)
     else:
-        form = PostForm(instance=post)
+        form = PostForm(request.POST, request.FILES, instance=post)
         if form.is_valid():
             form.save()
         return redirect(f'/posts/detail/{pk}')
