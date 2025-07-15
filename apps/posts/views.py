@@ -33,14 +33,14 @@ def update(request, pk):
         form = PostForm(instance=post)
         context = {
             'form': form, 
-            'pk': pk
+            'post': post
         }
         return render(request, 'posts/update.html', context=context)
     else:
         form = PostForm(request.POST, request.FILES, instance=post)
         if form.is_valid():
             form.save()
-        return redirect(f'/posts/detail/{pk}')
+        return redirect('posts:detail', pk=pk)
 
 def delete(request, pk):
     post = Post.objects.get(id=pk)
