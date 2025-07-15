@@ -8,9 +8,12 @@
 {% block content %}
 <div class="search-box">
     <form action="/">
-        <input class='form-control' type="input" name="search_txt" placeholder="검색어를 입력하세요" />
-        <input class='form-control' type="text" name="min_price" placeholder="최소 가격" />
-        <input class='form-control mx-2' type="text" name="max_price" placeholder="최대 가격" />
+        <input class='form-control' type="input" name="search_txt" placeholder="검색어를 입력하세요"
+            value="{{ search_txt|default:'' }}" />
+        <input class='form-control' type="text" name="min_price" placeholder="최소 가격"
+            value="{{ min_price|default:'' }}" />
+        <input class='form-control mx-2' type="text" name="max_price" placeholder="최대 가격"
+            value="{{ max_price|default:'' }}" />
         <input class='btn btn-outline-success mx-2' type="submit" value="검색" />
     </form>
     <a href="{% url 'posts:create' %}" class='btn btn-secondary'>글 생성하러 가기</a>
