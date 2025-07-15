@@ -1,10 +1,12 @@
 from django.urls import path
-from apps.posts import views
+from .views import *
+
+app_name = 'posts'
 
 urlpatterns = [
-    path('', views.main),
-    path('posts/create', views.create),
-    path('posts/detail/<int:pk>', views.detail),
-    path('posts/update/<int:pk>', views.update),
-    path('posts/delete/<int:pk>', views.delete),
+    path('', main, name='main'),
+    path('create', create, name='create'),
+    path('detail/<int:pk>', detail, name='detail'),
+    path('update/<int:pk>', update, name='update'),
+    path('delete/<int:pk>', delete, name='delete'),
 ]
